@@ -2,12 +2,9 @@ import PropTypes from 'prop-types'
 
 const Button = ({text, onClick}) => {
     return (
-        <button
-            onClick = {onClick}
-            className='btn'
-        >
-            {text}
-        </button>
+            <button onClick = {onClick} id='login-form-submit'>
+                {text}
+            </button>
     )
 }
 

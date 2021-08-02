@@ -2,6 +2,7 @@ import React, { Suspense, useState } from "react";
 import Registration from "./components/Registration";
 import Survey from "./components/Survey";
 import Loading from "./components/Loading";
+import "./components/styles/body.css"
 
 const checkuserurl = "http://localhost:5000/api/checkuser/";
 const getobjfileurl = "http://localhost:5000/api/getfile/";
@@ -29,7 +30,7 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <body>
       {
         regPage ? 
           <Registration onRegister={handleLogin}/> : 
@@ -37,7 +38,7 @@ function App() {
             <Survey url={getobjfileurl} nextseq={nextSeqId} userId={userId}/>
           </Suspense>
       }
-    </div>
+    </body>
   );
 }
 
