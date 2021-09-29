@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Button from "./Button";
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls } from '@react-three/drei';
 import "./styles/rendering.css"
+import * as THREE from 'three';
 
 const Rendering = ({object, orbitRef, onClick, model, render}) => {
     const icosaedron = [
@@ -25,14 +26,25 @@ const Rendering = ({object, orbitRef, onClick, model, render}) => {
         lights.push(<pointLight position={value} intensity={0.1}/>)
     }
 
+    //const new_object = (object.children && object.children.length > 0) ? {...object, children: object.children[0]} : object;
+    // var new_object = object
+    // console.log(object.children.length)
+    // console.log(object.children[0])
+    // console.log(object)
+    // new_object.children = [new_object.children[0]]
+    // console.log(new_object)
+
+    const check_obj = (obj) => {
+        return obj;
+    } 
+
     return (
         <div class="float-child">
             <Canvas camera={{position:[0,0,1], fov:60}}>
                 <OrbitControls ref={orbitRef} />
                 {lights}
-                {/* <pointLight position={[10, 10, 10]} intensity={1} /> */}
                 <mesh position={[0,0,0]}>
-                    <primitive object={object} />
+                    <primitive object={check_obj(object)} />
                     <meshPhongMaterial attach="material" color="#ffffff" />
                 </mesh>
             </Canvas>
